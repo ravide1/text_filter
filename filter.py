@@ -13,19 +13,19 @@ def random_filter(text):
     for i in text:
         r = random.randint(0, 1)
         if r == 0:
-            text_result += text[i].upper()
+            text_result += i.upper()
         elif r == 1:
-            text_result += text[i].lower()
+            text_result += i.lower()
 
     return text_result
 
 
-def user_choice_input(min, max):
-    filter = input("Введите номер желаемого фильтра : ")
+def user_choice_input(prompt, error_message,  min, max):
+    filter = input(prompt)
     while True:
         if not filter.isdigit() or not min <= int(filter) <= max:
-            print("Номер фильтра введен неверно, повторите попытку")
-            filter = input("Введите номер желаемого фильтра : ")
+            print(f"{error_message} Число должно быть от {min} до {max}")
+            filter = input(prompt)
         else:
             break
     return int(filter)
